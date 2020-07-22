@@ -23,7 +23,7 @@ const Panel = styled.div`
 export default function Container(props: any) {
     return (
         <Panel
-            className={classnames('mul-doc-container', {
+            className={classnames('mul-doc-container mul-doc-row', {
                 'mul-doc-container--with-simulator': props.hasSimulator,
             })}
         >

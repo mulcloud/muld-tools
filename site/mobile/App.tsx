@@ -6,12 +6,10 @@ import { Base } from '../common/style/base';
 import GlobalStyle from 'builtin_css';
 
 function RouterView() {
-    console.log('mobile:', getRoutes());
     let element = useRoutes(getRoutes());
     return element;
 }
 export function App() {
-    console.log(window.location.hash);
     return (
         <div>
             <GlobalStyle />

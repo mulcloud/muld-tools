@@ -12,7 +12,6 @@ import {
 } from '../../common/style/var';
 
 export default function Simulator(props: any) {
-    console.log('simulator:', props.src)
     const [scrollTop, setScrollTop] = React.useState(window.scrollY);
     const [windowHeight, setWindowHeight] = React.useState(window.innerHeight);
     const iframeRef = React.useRef(null);
@@ -31,7 +30,7 @@ export default function Simulator(props: any) {
 
     return (
         <Panel
-            className={classnames('mul-doc-simulator', { 'mul-doc-simulator-fixed': isFixed() })}
+            className={classnames('mul-doc-simulator ', { 'mul-doc-simulator-fixed': isFixed() })}
         >
             <iframe ref={iframeRef} src={props.src} style={simulatorStyle} />
         </Panel>
