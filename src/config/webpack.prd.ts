@@ -8,7 +8,7 @@ import { get } from 'lodash';
 const TerserPlugin = require('terser-webpack-plugin');
 const muldConfig = getMuldConfig();
 const outputDir = get(muldConfig, 'build.site.outputDir', SITE_DIST_DIR);
-const publicPath = get(muldConfig, 'build.site.publicPath', '/');
+const publicPath = get(muldConfig, 'build.site.publicPath', '/muld/');
 
 export function getSitePrdConfig(): WebpackConfig {
     return merge(getSiteDevConfig(), {
