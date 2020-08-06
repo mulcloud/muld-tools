@@ -9,6 +9,7 @@ import { SRC_DIR, LIB_DIR, ES_DIR } from '../config/constant';
 import {
     isDir,
     isScript,
+    isFonts,
     isDemoDir,
     isTestDir,
     setNodeEnv,
@@ -19,6 +20,10 @@ async function compileFile(filePath: string) {
 
     if (isScript(filePath)) {
         return compileJs(filePath);
+    }
+
+    if (isFonts(filePath)) {
+        return filePath;
     }
 
     return remove(filePath);
