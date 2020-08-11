@@ -1,24 +1,21 @@
 import WebpackBar from 'webpackbar';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
-import { get } from 'lodash';
 import { join } from 'path';
-
 import { merge } from 'webpack-merge';
 import { baseConfig } from './webpack.base';
 import { WebpackConfig } from './types';
+import { MuldSitePlugin } from '../compiler/muld-site-plugin';
 import {
+    getMuldConfig,
     GREEN,
-    DIST_DIR,
     SITE_MODILE_SHARED_FILE,
     SITE_DESKTOP_SHARED_FILE,
     BUILTIN_COMPONENT,
 } from './constant';
-import { getMuldConfig,  } from './constant';
-
-import { MuldSitePlugin } from '../compiler/muld-site-plugin';
 
 export function getSiteDevConfig(): WebpackConfig {
     const muldConfig = getMuldConfig();
+
     function getSiteConfig() {
         const siteConfig = muldConfig.site;
         if (siteConfig.locales) {
@@ -26,6 +23,7 @@ export function getSiteDevConfig(): WebpackConfig {
         }
         return siteConfig;
     }
+
     function getTitle(config: { title: string; description?: string }) {
         let { title } = config;
 
@@ -35,6 +33,7 @@ export function getSiteDevConfig(): WebpackConfig {
 
         return title;
     }
+    
     const siteConfig = getSiteConfig();
     const title = getTitle(siteConfig);
 
@@ -56,7 +55,7 @@ export function getSiteDevConfig(): WebpackConfig {
             alias: {
                 'site-mobile-shared': SITE_MODILE_SHARED_FILE,
                 'site-desktop-shared': SITE_DESKTOP_SHARED_FILE,
-                'builtin_css': BUILTIN_COMPONENT,
+                builtin_css: BUILTIN_COMPONENT,
             },
         },
         output: {

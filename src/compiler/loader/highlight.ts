@@ -1,9 +1,9 @@
 const hljs = require('highlight.js');
 
-module.exports = function highlight(str: string, lang: string) {
+export function highlight(str: string, lang: string) {
     if (lang && hljs.getLanguage(lang)) {
         return hljs.highlight(lang, str, true).value;
     }
 
     return '';
-};
+}

@@ -1,5 +1,4 @@
 import { join, parse } from 'path';
-import glob from 'fast-glob';
 import { existsSync, readdirSync } from 'fs-extra';
 import { SRC_DIR, SITE_MODILE_SHARED_FILE, DOCS_DIR } from '../config/constant';
 import {

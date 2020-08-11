@@ -1,8 +1,7 @@
-// add target="_blank" to all links
-module.exports = function linkOpen(md:any) {
+export function linkOpen(md: any) {
     const defaultRender =
         md.renderer.rules.link_open ||
-        function (tokens:any, idx:any, options:any, env:any, self:any) {
+        function (tokens: any, idx: any, options: any, env: any, self: any) {
             return self.renderToken(tokens, idx, options);
         };
 
@@ -21,4 +20,4 @@ module.exports = function linkOpen(md:any) {
 
         return defaultRender(tokens, idx, options, env, self);
     };
-};
+}

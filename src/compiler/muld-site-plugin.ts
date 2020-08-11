@@ -2,7 +2,6 @@ import { Compiler } from 'webpack';
 import { genSiteMobileShared } from './gen-site-mobile-shared';
 import { genSiteDesktopShared } from './gen-site-desktop-shared';
 import { genStyleDepsMap } from './gen-style-deps-map';
-import { PACKAGE_ENTRY_FILE, PACKAGE_STYLE_FILE } from '../config/constant';
 
 const PLUGIN_NAME = 'MuldSitePlugin';
 
