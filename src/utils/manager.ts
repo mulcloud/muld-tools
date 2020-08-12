@@ -26,8 +26,6 @@ export async function installDependencies() {
         await execa(manager, ['install', '--prod=false'], {
             stdio: 'inherit',
         });
-
-        console.log('');
     } catch (err) {
         console.log(err);
         throw err;
