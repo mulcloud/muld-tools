@@ -87,4 +87,4 @@ function getSrcDir() {
 
 export const SRC_DIR = getSrcDir();
 export const STYLE_DIR = join(SRC_DIR, 'style');
-export const BUILTIN_COMPONENT = join(SRC_DIR, 'builtin', 'index.tsx');
+export const BUILTIN_COMPONENT = join(STYLE_DIR, 'index.tsx');
