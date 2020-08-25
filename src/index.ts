@@ -8,6 +8,7 @@ import packageJson from '../package.json';
 import { dev } from './commands/dev';
 import { build } from './commands/build';
 import { buildSite } from './commands/build-site';
+import { commitLint } from './commands/commit-lint';
 import { clean } from './commands/clean';
 
 version(`@mulcloud/muld-tools ${packageJson.version}`);
@@ -19,9 +20,12 @@ command('build-site').description('Compile site in production mode').action(buil
 
 command('clean').description('Clean all dist files').action(clean);
 
+command('commit-lint').description('Lint commit message').action(commitLint);
+
 command('build')
     .description('Compile components in production mode')
     .option('--watch', 'Watch file change')
     .action(build);
 
 parse();
+
