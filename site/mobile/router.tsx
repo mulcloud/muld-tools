@@ -1,12 +1,11 @@
 import * as React from 'react';
-import * as router from 'react-router-dom';
-import DemoHome from './layout/DemoHome';
+import { Navigate } from 'react-router-dom';
 import { decamelize } from '../common';
 import { demos, config } from 'site-mobile-shared';
-import { getLang, setDefaultLang } from '../common/locales';
+import DemoHome from './layout/DemoHome';
+import { getLang, setDefaultLang, setComponents } from '../common/locales';
 
 const { locales, defaultLang } = config.site;
-
 setDefaultLang(defaultLang);
 
 function getLangFromRoute(route) {
@@ -16,7 +15,6 @@ function getLangFromRoute(route) {
     if (langs.indexOf(lang) !== -1) {
         return lang;
     }
-
     return getLang();
 }
 
@@ -24,31 +22,20 @@ export function getRoutes() {
     const routes = [];
     const names = Object.keys(demos);
     const langs = locales ? Object.keys(locales) : [];
+    const componentsMap: Record<string, string> = {};
 
-    // if (langs.length) {
-    //     routes.push({
-    //         path: '*',
-    //         redirect: (route) => `/${getLangFromRoute(route)}/`,
-    //     });
-
-    //     langs.forEach((lang) => {
-    //         routes.push({
-    //             path: `/${lang}`,
-    //             component: DemoHome,
-    //             meta: { lang },
-    //         });
-    //     });
-    // } else {
-    //     routes.push({
-    //         path: '*',
-    //         redirect: () => '/',
-    //     });
-
-    //     routes.push({
-    //         path: '/',
-    //         component: DemoHome,
-    //     });
-    // }
+    routes.push({
+        path: '/',
+        element: <DemoHome />,
+    });
+    routes.push({
+        path: '/zh-CN/home',
+        element: <DemoHome />,
+    });
+    routes.push({
+        path: '/zh-CN/changelog',
+        element: <DemoHome />,
+    });
 
     names.forEach((name) => {
         const component = decamelize(name);
@@ -65,6 +52,7 @@ export function getRoutes() {
                         lang,
                     },
                 });
+                componentsMap[`/${lang}/${component}`] = name;
             });
         } else {
             routes.push({
@@ -75,8 +63,12 @@ export function getRoutes() {
                     name,
                 },
             });
+            componentsMap[`/${component}`] = name;
         }
     });
-
+    routes.push({
+        element: <Navigate to="/" />,
+    });
+    setComponents(componentsMap);
     return routes;
 }

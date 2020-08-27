@@ -14,7 +14,6 @@ export default function Nav({ config, lang }: { config: Record<string, any>; lan
     const bottom = 0;
     const onScroll = () => {
         const { pageYOffset: offset } = window;
-        
         setTop(Math.max(0, 60 - offset));
     };
 

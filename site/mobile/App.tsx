@@ -1,8 +1,9 @@
 import * as React from 'react';
-import { getRoutes } from './router';
-import { useRoutes, HashRouter as Router, Routes } from 'react-router-dom';
+import { useRoutes, HashRouter as Router } from 'react-router-dom';
 import { createGlobalStyle } from 'styled-components';
+import { getRoutes } from './router';
 import { Base } from '../common/style/base';
+import DemoNav from './layout/DemoNav';
 import GlobalStyle from 'builtin_css';
 
 function RouterView() {
@@ -16,6 +17,7 @@ export function App() {
             <Base />
             <OverrideCss />
             <Router>
+                <DemoNav />
                 <RouterView />
             </Router>
         </div>

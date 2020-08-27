@@ -1,14 +1,11 @@
 import * as React from 'react';
-import styled from 'styled-components';
 import { Doc } from './layout';
-import { config, packageVersion } from 'site-desktop-shared';
+import { config } from 'site-desktop-shared';
 import { getRoutes } from './router';
-import { useRoutes, HashRouter as Router, Routes } from 'react-router-dom';
+import { useRoutes, HashRouter as Router } from 'react-router-dom';
 
 function RouterView() {
-    let element = useRoutes(getRoutes());
-
-    return element;
+    return useRoutes(getRoutes());
 }
 
 export function App() {
@@ -18,10 +15,10 @@ export function App() {
         window.onhashchange = () => {
             setSimulator(`${path}mobile.html${window.location.hash}`);
         };
-        if (window.location.hash) {
-            // TODO:
-            // scrollToAnchor(window.location.hash);
-        }
+        // if (window.location.hash) {
+        //     // TODO:
+        //     // scrollToAnchor(window.location.hash);
+        // }
     }, []);
     const [locale, setLocale] = React.useState(localStorage.getItem('MULD_LANGUAGE') || 'zh-CN');
 

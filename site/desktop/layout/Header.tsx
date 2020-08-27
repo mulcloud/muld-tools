@@ -37,7 +37,7 @@ export default function Header({ config, lang }: { config: Record<string, any>; 
             <div className="mul-doc-row">
                 <div className="mul-doc-header__top">
                     <a className="mul-doc-header__logo">
-                        <img src={logo} />
+                        {/* <img src={logo} /> */}
                         <span>{title}</span>
                     </a>
                     <ul className="mul-doc-header__top-nav">{linksContent}</ul>

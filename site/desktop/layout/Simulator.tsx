@@ -2,7 +2,6 @@ import * as React from 'react';
 import styled from 'styled-components';
 import classnames from 'classnames';
 import {
-    $mul_doc_nav_width,
     $mul_doc_border_radius,
     $mul_doc_simulator_width,
     $mul_doc_padding,
@@ -15,6 +14,7 @@ export default function Simulator(props: any) {
     const [scrollTop, setScrollTop] = React.useState(window.scrollY);
     const [windowHeight, setWindowHeight] = React.useState(window.innerHeight);
     const iframeRef = React.useRef(null);
+
     React.useEffect(() => {
         window.addEventListener('scroll', () => {
             setScrollTop(window.scrollY);
@@ -23,6 +23,7 @@ export default function Simulator(props: any) {
             setWindowHeight(window.innerHeight);
         });
     }, [scrollTop, windowHeight]);
+
     const simulatorStyle: React.CSSProperties = {
         height: Math.min(640, windowHeight - 90) + 'px',
     };

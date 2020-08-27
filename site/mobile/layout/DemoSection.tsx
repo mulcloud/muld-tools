@@ -4,14 +4,11 @@ import classnames from 'classnames';
 
 export default function DemoSection(props: any) {
     return (
-        <section className={classnames('muld-doc-demo-section', props.className)}>
-            {props.children}
-        </section>
+        <View className={classnames('mul-doc-demo-section', props.className)}>{props.children}</View>
     );
 }
-
 const View = styled.section`
-    &.muld-doc-demo-section {
+    &.mul-doc-demo-section {
         box-sizing: border-box;
         min-height: calc(100vh - 56px);
         padding-bottom: 20px;

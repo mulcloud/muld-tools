@@ -2,6 +2,18 @@ import * as React from 'react';
 import styled from 'styled-components';
 import { $mul_doc_text_light_blue } from '../../common/style/var';
 
+export default function DemoBlock(props: { card?: any; title: string; children: any }) {
+    const { card, title, children } = props;
+
+    const content = card ? <div className="mul-doc-demo-block__card">{card}</div> : children;
+    return (
+        <View className="mul-doc-demo-block">
+            <h2 className="mul-doc-demo-block__title">{title}</h2>
+            <div className="mul-doc-demo-block__card">{content}</div>
+        </View>
+    );
+}
+
 const View = styled.div`
     &.mul-doc-demo-block {
         .mul-doc-demo-block__title {
@@ -30,14 +42,3 @@ const View = styled.div`
         }
     }
 `;
-export default function DemoBlock(props: { card?: any; title: string; children: any }) {
-    const { card, title, children } = props;
-
-    const content = card ? <div className="mul-doc-demo-block__card">{card}</div> : children;
-    return (
-        <View className="mul-doc-demo-block">
-            <h2 className="mul-doc-demo-block__title">{title}</h2>
-            {content}
-        </View>
-    );
-}

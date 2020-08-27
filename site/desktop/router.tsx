@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as router from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 import { config, documents } from 'site-desktop-shared';
 import { isMobile, decamelize } from '../common';
 import { getLang, setDefaultLang } from '../common/locales';
@@ -9,7 +9,6 @@ if (isMobile) {
 }
 
 const { locales, defaultLang } = config.site;
-
 setDefaultLang(defaultLang);
 
 function parseName(name) {
@@ -43,18 +42,6 @@ function getLangFromRoute(route) {
 export function getRoutes() {
     const routes = [];
     const names = Object.keys(documents);
-
-    // if (locales) {
-    //   routes.push({
-    //     path: '*',
-    //     redirect: route => `/${getLangFromRoute(route)}/`,
-    //   });
-    // } else {
-    //   routes.push({
-    //     path: '*',
-    //     redirect: '/',
-    //   });
-    // }
 
     // { path: '/', element: <Home /> },
     function addHomeRoute(Home, lang) {
@@ -94,6 +81,10 @@ export function getRoutes() {
                 },
             });
         }
+    });
+
+    routes.push({
+        element: <Navigate to="/zh-CN/home" />,
     });
 
     return routes;
