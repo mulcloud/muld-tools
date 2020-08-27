@@ -11,7 +11,11 @@ export default function DemoHomeNav(props: any) {
                 className="demo-home-nav__block"
                 key={item.path}
                 onClick={() => {
-                    window.top.location.replace(`/#${base}/${item.path}`);
+                    const location = window.top.location;
+                    const targetPath = location.host.startsWith('mulcloud')
+                        ? `/muld/#${base}/${item.path}`
+                        : `/#${base}/${item.path}`;
+                    window.top.location.replace(targetPath);
                 }}
             >
                 {item.title}
